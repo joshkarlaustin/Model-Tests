@@ -44,3 +44,23 @@ bias4 = 0
 bias5 = 0
 bias6 = 0
 bias7 = 0
+
+
+multi23 = 0.99
+multi24 = 0
+multi25 = 0
+multi26 = 0
+multi27 = 0
+multi34 = 0
+multi35 = 0
+multi36 = 0
+multi37 = 0
+multi45 = 0.99
+multi46 = 0
+multi47 = 0
+multi56 = 0
+multi57 = 0
+multi67 = 0
+
+
+
