@@ -62,5 +62,30 @@ multi56 = 0
 multi57 = 0
 multi67 = 0
 
+obs = 1000
+
+mean = [muE, mu2, mu3, mu4, mu5, mu6, mu7]
+variances = np.array([sdE, sd2, sd3, sd4, sd5, sd6, sd7])
+varmat = np.outer(variances, np.transpose(variances))
+cov = np.array([[1, bias2, bias3, bias4, bias5, bias6, bias7],
+                [bias2, 1, multi23, multi24, multi25, multi26, multi27],
+                [bias3, multi23, 1, multi34, multi35, multi36, multi37],
+                [bias4, multi24, multi34, 1, multi45, multi46, multi47],
+                [bias5, multi25, multi35, multi45, 1, multi56, multi57],
+                [bias6, multi26, multi36, multi46, multi56, 1, multi67],
+                [bias7, multi27, multi37, multi47, multi57, multi67, 1]])
+varcov = varmat * cov
+multiplier = [[betE], [bet2], [bet3], [bet4], [bet5], [bet6], [bet7]]
+
+
+rawdata = np.random.multivariate_normal(mean, cov, obs)
+latent = rawdata @ multiplier
+outcome = (latent > 0) * 1
+X_data = rawdata[:, 1:]
+combined = pd.DataFrame(np.append(outcome, X_data, axis=1))
+
+
+
+
 
 
